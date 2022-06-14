@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/user", UserRoute);
-//app.use("/land", LandRoute);
+app.use("/land", LandRoute);
 
 router.get("/", (req, res) => {
   res.status(200).send("website load succefully!");
