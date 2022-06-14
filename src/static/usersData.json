@@ -1,0 +1,20 @@
+{
+    "users": 
+    [
+            {
+                "name": "Nadav",
+                "email": "Nadav1992@gmail.com",
+                "password": "1111",
+                "type": "trader",
+                "budget": 1000
+            },
+
+            {
+                "name": "Jhon",
+                "email": "Jhon2000@gmail.com",
+                "password": "2222",
+                "type": "geust",
+                "budget": 1000
+            }
+    ]
+}

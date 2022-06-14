@@ -1,0 +1,26 @@
+{
+  "name": "meta_centraland",
+  "version": "1.0.0",
+  "description": "world of meta_centraland",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "keywords": [
+    "meta",
+    "centraland",
+    "game",
+    "homework"
+  ],
+  "author": "Nadav Cohen",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "lodash": "^4.17.21",
+    "mongodb": "^4.6.0",
+    "mongoose": "^6.3.5",
+    "nodemon": "^2.0.16"
+  }
+}

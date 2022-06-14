@@ -1,0 +1,12 @@
+{
+    "land-0": {
+        "id": 0,
+        "owner": "Nadav1996",
+        "can_be_sale": true,
+        "price": 20,
+        "there_is_game": false,
+        "game": null,
+        "isPark": false,
+        "isRoad": false
+    }
+}
