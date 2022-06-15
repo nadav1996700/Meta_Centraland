@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 const UserRoute = require("./routes/userRouter");
 const LandRoute = require("./routes/landRouter");
-const reBuild = require("./routes/reBuildDB");
+const mongoose = require("./db/mongoose");
 const bodyParser = require("body-parser");
 const router = express.Router();
 
@@ -22,12 +22,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/user", UserRoute);
 app.use("/land", LandRoute);
 
-router.get("/", (req, res) => {
-  res.status(200).send("website load succefully!");
-});
+mongoose.connectToMongo();
 
-router.get("/reset", (req, res) => {
-  reBuild.reset(req, res);
+router.get("/reset", function () {
+  reBuild.reset();
 });
 
 router.get("*", (req, res) => {
