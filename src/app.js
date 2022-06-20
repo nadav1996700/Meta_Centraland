@@ -5,10 +5,11 @@ const UserRoute = require("./routes/userRouter");
 const LandRoute = require("./routes/landRouter");
 const mongoose = require("./db/mongoose");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const router = express.Router();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 // Define paths for Express config
 const staticPath = path.join(__dirname, "../static");
@@ -19,8 +20,14 @@ app.use(express.static(staticPath));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/user", UserRoute);
-app.use("/land", LandRoute);
+app.use("/user", cors(), UserRoute);
+app.use("/land", cors(), LandRoute);
+
+const corsOptions = {
+  origin: ["http://localhost:3000"],
+  optionSuccessStatus: 200,
+};
+router.use(cors(corsOptions));
 
 mongoose.connectToMongo();
 

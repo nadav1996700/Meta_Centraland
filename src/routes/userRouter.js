@@ -39,7 +39,7 @@ UserRouter.route("/signup").post(function (req, res, next) {
 });
 
 // login
-UserRouter.route("/login").get(function (req, res, next) {
+UserRouter.route("/login").post(function (req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
 
@@ -50,9 +50,23 @@ UserRouter.route("/login").get(function (req, res, next) {
     }
     // if user found
     if (user.length != 0) {
-      res.status(200).send("user loged in succesfully");
+      console.log(
+        "server message: user with email: " +
+          email +
+          " and password: " +
+          password +
+          " logged in succesfully"
+      );
+      res.status(200).send("success");
     } else {
-      res.status(400).send("user does not found");
+      console.log(
+        "server message: user with email: " +
+          email +
+          " and password: " +
+          password +
+          " does not found"
+      );
+      res.status(400).send("failure");
     }
   });
 });
