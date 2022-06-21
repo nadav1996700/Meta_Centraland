@@ -22,7 +22,7 @@ function reset() {
   const roadLands = [16, 17, 18, 19, 32, 44];
   const max = 200,
     min = 15;
-  for (var i = 0; i < numberOfLands; i++) {
+  for (var i = 1; i <= numberOfLands; i++) {
     let isPark = parkLands.some((element) => element === i);
     let isRoad = roadLands.some((element) => element === i);
     let canBeSale = !isPark && !isRoad && i < 40 ? true : false;
