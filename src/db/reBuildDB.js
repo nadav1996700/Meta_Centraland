@@ -16,10 +16,10 @@ function reset() {
     new User(users_data[i]).save();
   }
 
-  // populate the lands collectio
+  // populate the lands collection
   const numberOfLands = 100;
-  const parkLands = [50, 60, 70, 80];
-  const roadLands = [52, 53, 54, 55, 56, 57, 62, 72];
+  const parkLands = [28, 40, 52, 64, 41, 54, 67, 55, 43, 31, 96, 97, 98, 99];
+  const roadLands = [16, 17, 18, 19, 32, 44];
   const max = 200,
     min = 15;
   for (var i = 0; i < numberOfLands; i++) {
