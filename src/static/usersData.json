@@ -3,7 +3,7 @@
         "name": "Nadav",
         "email": "Nadav1992@gmail.com",
         "password": "1111",
-        "type": "trader",
+        "type": "User",
         "budget": 1000
     },
 
@@ -11,15 +11,7 @@
         "name": "Jhon",
         "email": "Jhon2000@gmail.com",
         "password": "2222",
-        "type": "geust",
-        "budget": 0
-    },
-    {
-        "name": "Jordan",
-        "email": "Jordan1212@gmail.com",
-        "password": "3333",
-        "type": "geust",
+        "type": "Geust",
         "budget": 0
     }
-
 ]

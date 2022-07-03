@@ -31,6 +31,7 @@ router.use(cors(corsOptions));
 
 mongoose.connectToMongo();
 
+// reset the database
 router.get("/reset", function () {
   reBuild.reset();
 });
