@@ -56,26 +56,27 @@ UserRouter.route("/signup").post(async function (req, res) {
 UserRouter.route("/login").post(async function (req, res) {
   const body = req.body;
 
-  const user = User.findOne({ email: body.email });
-  console.log(user);
+  const user = await User.findOne({ email: body.email });
+  console.log("user = " + user);
   // if user found
   if (user) {
+    // check user password with hashed password stored in the database
     const validPassword = await bcrypt.compare(body.password, user.password);
     if (validPassword) {
       console.log(
         "server message: user with email: " +
-          email +
+          body.email +
           " and password: " +
-          password +
+          body.password +
           " logged in succesfully"
       );
       res.status(200).send("success");
     } else {
       console.log(
         "server message: user with email: " +
-          email +
+          body.email +
           " and password: " +
-          password +
+          body.password +
           " does not found"
       );
       res.status(400).send("failure");
