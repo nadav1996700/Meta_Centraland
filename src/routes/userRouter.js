@@ -57,7 +57,6 @@ UserRouter.route("/login").post(async function (req, res) {
   const body = req.body;
 
   const user = await User.findOne({ email: body.email });
-  console.log("user = " + user);
   // if user found
   if (user) {
     // check user password with hashed password stored in the database
@@ -70,7 +69,7 @@ UserRouter.route("/login").post(async function (req, res) {
           body.password +
           " logged in succesfully"
       );
-      res.status(200).send("success");
+      res.status(200).send(JSON.stringify(user));
     } else {
       console.log(
         "server message: user with email: " +
