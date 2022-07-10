@@ -7,7 +7,11 @@ const LandSchema = new Schema({
     type: Number,
     required: true,
   },
-  owner: {
+  ownerName: {
+    type: String,
+    required: true,
+  },
+  ownerEmail: {
     type: String,
     required: true,
   },

@@ -36,7 +36,8 @@ function reset() {
     landsList.push(
       new Land({
         id: i,
-        owner: "Nadav&Yarden.Ltd",
+        ownerName: "Nadav&Yarden.Ltd",
+        ownerEmail: "NadavAndYarden@gmail.com",
         can_be_sale: canBeSale,
         price: canBeSale
           ? Math.floor(Math.random() * (max - min + 1) + min)

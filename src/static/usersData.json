@@ -1,5 +1,12 @@
 [
     {
+        "name": "Nadav&Yarden",
+        "email": "NadavAndYarden@gmail.com",
+        "password": "1111",
+        "type": "User",
+        "budget": 1000
+    },
+    {
         "name": "Nadav",
         "email": "Nadav1992@gmail.com",
         "password": "1111",
