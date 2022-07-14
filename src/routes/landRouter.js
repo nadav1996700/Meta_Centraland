@@ -40,7 +40,10 @@ LandRouter.route("/isForSale").put(function (req, res) {
       console.log("Error: " + err);
       res.status(400).send("error occured!");
     } else {
-      res.status(200).send("land status changed to " + req.body.can_be_sale);
+      res.status(200).json({
+        message: "land status changed to " + land.can_be_sale,
+        land: land,
+      });
     }
   });
 });
