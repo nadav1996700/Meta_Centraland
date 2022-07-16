@@ -11,6 +11,29 @@ function reset() {
   const jsonPath = path.join(__dirname, "..", "static", "usersData.json");
   const data = fs.readFileSync(jsonPath, "utf8");
   const users_data = JSON.parse(data);
+
+  let roadLands = [];
+
+  const createRoads = () => {
+    let i, j;
+    for (i = 5, j = 6; i <= 9955 || j <= 9956; i += 50, j += 50) {
+      roadLands.push(i);
+      roadLands.push(j);
+    }
+    for (i = 501, j = 551; i <= 550 || j <= 600; i++, j++) {
+      roadLands.push(i);
+      roadLands.push(j);
+    }
+    for (i = 1101, j = 1151; i <= 1150 || j <= 1200; i++, j++) {
+      roadLands.push(i);
+      roadLands.push(j);
+    }
+    for (i = 2401, j = 2451; i <= 2450 || j <= 2500; i++, j++) {
+      roadLands.push(i);
+      roadLands.push(j);
+    }
+  };
+
   // populate the users collection from json data
   for (var i = 0; i < users_data.length; i++) {
     new User(users_data[i]).save();
@@ -25,23 +48,23 @@ function reset() {
     1729, 1679, 1629, 1579, 1529, 1739, 1535, 1586, 1637, 1688, 1690, 1641,
     1592, 1543, 1789, 1839, 1889, 1939, 1989, 2039, 2089, 2189, 2139,
   ];
-  const roadLands = [];
+
   const max = 200,
     min = 15;
   const landsList = [];
+  createRoads();
   for (var i = 1; i <= numberOfLands; i++) {
     let isPark = parkLands.some((element) => element === i);
+    //let isRoad = i;
     let isRoad = roadLands.some((element) => element === i);
-    let canBeSale = !isPark && !isRoad && i < 40 ? true : false;
+    let canBeSale = !isPark && !isRoad && i <= 250 ? true : false;
     landsList.push(
       new Land({
         id: i,
         ownerName: "Nadav&Yarden.Ltd",
         ownerEmail: "NadavAndYarden@gmail.com",
         can_be_sale: canBeSale,
-        price: canBeSale
-          ? Math.floor(Math.random() * (max - min + 1) + min)
-          : 0,
+        price: Math.floor(Math.random() * (max - min + 1) + min),
         game: "",
         isPark: isPark,
         isRoad: isRoad,

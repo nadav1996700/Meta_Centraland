@@ -15,6 +15,24 @@ LandRouter.route("/getAllLands").get(function (req, res) {
   });
 });
 
+// add game address to specific land
+LandRouter.route("/setGame").put(function (req, res) {
+  Land.findOneAndUpdate(req.body.id, { game: req.body.gameAddress }).exec(
+    function (err, land) {
+      if (err) {
+        console.log("Error: " + err);
+        res.status(400).send("error occured!");
+      } else {
+        res
+          .status(200)
+          .send(
+            "land game address changed succesfully to " + req.body.gameAddress
+          );
+      }
+    }
+  );
+});
+
 // change price of land
 LandRouter.route("/setPrice").put(function (req, res) {
   Land.findOneAndUpdate(req.body.id, { price: req.body.newPrice }).exec(
@@ -89,7 +107,11 @@ LandRouter.route("/transferOwnership").put(function (req, res) {
     } else {
       res
         .status(200)
-        .send("land with id: " + req.body.landId + " selled succesfully");
+        .json({
+          message: "land with id: " + req.body.landId + " selled succesfully",
+          land: land,
+        });
+      //.send("land with id: " + req.body.landId + " selled succesfully");
     }
   });
 });
