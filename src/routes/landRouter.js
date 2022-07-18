@@ -17,25 +17,26 @@ LandRouter.route("/getAllLands").get(function (req, res) {
 
 // add game address to specific land
 LandRouter.route("/setGame").put(function (req, res) {
-  Land.findOneAndUpdate(req.body.id, { game: req.body.gameAddress }).exec(
-    function (err, land) {
-      if (err) {
-        console.log("Error: " + err);
-        res.status(400).send("error occured!");
-      } else {
-        res
-          .status(200)
-          .send(
-            "land game address changed succesfully to " + req.body.gameAddress
-          );
-      }
+  Land.findOneAndUpdate(
+    { id: req.body.id },
+    { game: req.body.gameAddress }
+  ).exec(function (err, land) {
+    if (err) {
+      console.log("Error: " + err);
+      res.status(400).send("error occured!");
+    } else {
+      res
+        .status(200)
+        .send(
+          "land game address changed succesfully to " + req.body.gameAddress
+        );
     }
-  );
+  });
 });
 
 // change price of land
 LandRouter.route("/setPrice").put(function (req, res) {
-  Land.findOneAndUpdate(req.body.id, { price: req.body.newPrice }).exec(
+  Land.findOneAndUpdate({ id: req.body.id }, { price: req.body.newPrice }).exec(
     function (err, land) {
       if (err) {
         console.log("Error: " + err);
@@ -51,9 +52,12 @@ LandRouter.route("/setPrice").put(function (req, res) {
 
 // update the land status - "not for sale" or "for sale"
 LandRouter.route("/isForSale").put(function (req, res) {
-  Land.findOneAndUpdate(req.body.id, {
-    can_be_sale: req.body.can_be_sale,
-  }).exec(function (err, land) {
+  Land.findOneAndUpdate(
+    { id: req.body.id },
+    {
+      can_be_sale: req.body.can_be_sale,
+    }
+  ).exec(function (err, land) {
     if (err) {
       console.log("Error: " + err);
       res.status(400).send("error occured!");
@@ -97,20 +101,21 @@ LandRouter.route("/transferOwnership").put(function (req, res) {
   });
 
   // upadte land data - owner and status
-  Land.findOneAndUpdate(req.body.landId, {
-    ownerName: req.body.buyerName + ".Ltd",
-    ownerEmail: req.body.buyerEmail,
-    can_be_sale: false,
-  }).exec(function (err, land) {
+  Land.findOneAndUpdate(
+    { id: req.body.landId },
+    {
+      ownerName: req.body.buyerName + ".Ltd",
+      ownerEmail: req.body.buyerEmail,
+      can_be_sale: false,
+    }
+  ).exec(function (err, land) {
     if (err) {
       res.status(400).send("error occured!");
     } else {
-      res
-        .status(200)
-        .json({
-          message: "land with id: " + req.body.landId + " selled succesfully",
-          land: land,
-        });
+      res.status(200).json({
+        message: "land with id: " + req.body.landId + " selled succesfully",
+        land: land,
+      });
       //.send("land with id: " + req.body.landId + " selled succesfully");
     }
   });
